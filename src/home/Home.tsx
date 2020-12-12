@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
-import React, { Component, useState } from 'react';
+import React from 'react';
+import { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
@@ -9,10 +10,19 @@ import { Veiculos } from '../services/Veiculos';
 
 export class Home extends Component<{ navigation: any }> {
     private navigation = this.props.navigation;
-    private carSearchResult: CarSearchResult = new CarSearchResult;
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            carSearchResult: new CarSearchResult()
+        }
+    }
+
 
     async consultarPlaca(placa: string) {
-        this.carSearchResult = await new Veiculos().ConsultarVeiculo(placa);
+        let veiculos = new Veiculos();
+        var result = await veiculos.ConsultarVeiculo(placa);
+        this.setState({carSearchResult: result});
     }
 
     render() {
@@ -59,11 +69,10 @@ export class Home extends Component<{ navigation: any }> {
                                 </TouchableHighlight> */}
                             </View>
                             {
-                                (this.carSearchResult.placa !== '') &&
-                                <SearchResult carSearchResult={this.carSearchResult} />
+                                (this.state.carSearchResult.placa !== '') &&
+                                <SearchResult carSearchResult={this.state.carSearchResult} />
                             }
                         </View>
-
                     )
                 }
             </Formik>

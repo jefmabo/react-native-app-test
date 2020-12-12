@@ -7,16 +7,13 @@ export class Veiculos {
     public async ConsultarVeiculo(placa: string): Promise<CarSearchResult> {
 
         var carSearchResult: CarSearchResult = new CarSearchResult();
-        console.log(`${this.baseUrl}/${placa}/json`);
         
         try {
-            var result = await Axios.get<CarSearchResult>(`${this.baseUrl}/${placa}/json`);    
-            carSearchResult = result.data;
+            var result = await Axios.get(`${this.baseUrl}/${placa}/json`);
+            carSearchResult = await result.data;
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
-        
-
 
         return carSearchResult;
     }
