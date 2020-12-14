@@ -8,7 +8,7 @@ import { Home } from './src/home/Home';
 import { LateralMenu } from './src/lateralMenu/Lateral-Menu';
 import { HomeStack } from './src/stacks/Home-Stack';
 
-export default class App extends Component<{}> {
+export default class App extends Component {
   Drawer = createDrawerNavigator();
 
   render() {
@@ -16,11 +16,11 @@ export default class App extends Component<{}> {
       <NavigationContainer>
         <this.Drawer.Navigator
           initialRouteName='Consultar'
-          // drawerContent={this.props => <LateralMenu {...this.props} />}
+          drawerContent={props => <LateralMenu {...props} />}
           drawerStyle={{
-          backgroundColor: '#BDA6FF'
-        }}>
-        <this.Drawer.Screen name='Consultar' component={HomeStack} />
+            backgroundColor: '#BDA6FF'
+          }}>
+          <this.Drawer.Screen name='Consultar' component={HomeStack} />
         </this.Drawer.Navigator>
       </NavigationContainer >
     );
