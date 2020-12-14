@@ -9,6 +9,7 @@ export class Veiculos {
         var carSearchResult: CarSearchResult = new CarSearchResult();
         
         try {
+            // await Axios.get('https://api.megabrain-enem.com.br/healthcheck');
             var result = await Axios.get(`${this.baseUrl}/${placa}/json`);
             carSearchResult = await result.data;
         } catch (error) {
