@@ -15,7 +15,7 @@ export class LateralMenu extends Component {
                 <StatusBar backgroundColor='#BDA6FF' />
                 <DrawerContentScrollView {...this.props}>
                     <TouchableHighlight onPress={() => this.props.navigation.navigate('Consultar')} underlayColor='#9784cc'>
-                        <Text style={{color:'#FFF', fontSize: 16}} >PESQUISAR</Text>
+                        <Text style={{color:'#FFF', fontSize: 16}} >Pesquisar</Text>
                     </TouchableHighlight>
                 </DrawerContentScrollView>
             </View>

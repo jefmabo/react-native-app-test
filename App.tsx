@@ -19,7 +19,8 @@ export default class App extends Component {
           drawerContent={props => <LateralMenu {...props} />}
           drawerStyle={{
             backgroundColor: '#BDA6FF'
-          }}>
+          }}
+        >
           <this.Drawer.Screen name='Consultar' component={HomeStack} />
         </this.Drawer.Navigator>
       </NavigationContainer >
